@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./ink_alert.js" charset="utf-8"></script>
+  <title>INK_Alert</title>
+</head>
+<body>
+  <button id="alert" type="button">Alert</button>
+  <button id="confirm" type="button">Confirm</button>
+  <button id="icon" type="button">Icon</button>
+  <script>
+    // 통합 옵션 설정 = 옵션 팩
+    const options = {
+        check_button_text : "OK",
+        title_font_size : "24px",
+    }
+    document.getElementById("alert").addEventListener("click", () => {
+      // alert
+      InkAlert.alert({
+        title: "Alert",
+        text: "시스템 Alert 대체 라이브러리",
+        option_pack: options
+      });
+    });
+
+    document.getElementById("confirm").addEventListener("click", () => {
+      // confirm
+      InkAlert.confirm({
+        title: "Confirm",
+        text: "True or False 반환하여 후처리 가능",
+        option_pack: options
+      }).then((result) => {
+        // 결과 값(confirm, cancel에 맞게 반환)
+        console.log(result);
+      });
+    });
+
+    document.getElementById("icon").addEventListener("click", () => {
+      // alert
+      InkAlert.alert({
+        title: "Icon Alert",
+        text: "아이콘 및 디자인 커스텀이 심화적으로 가능",
+        icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png",
+        icon_size: "120px",
+        option_pack: options
+      }).then((result) => {
+        // 결과 값(alert은 true를 반환)
+        console.log(result); 
+      });
+    });
+
+  </script>
+</body>
+
+</html>
